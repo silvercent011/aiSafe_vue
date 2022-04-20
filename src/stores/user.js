@@ -10,13 +10,21 @@ export const useUserStore = defineStore('user', {
         }
     },
     actions: {
-        async signIn({email, password}) {
+        async signIn({ email, password }) {
             await axios.post(`${API_URL}/users/auth`, { email, password }).then((res) => {
                 this.user_data = res.data
                 useToast().success('Logado com sucesso!')
             }).catch((error) => {
                 useToast().error('Falha no login')
             })
+        },
+
+        async signUpGuard(payload) {
+
+        },
+
+        async signUpContractor(payload) {
+
         }
     }
 })

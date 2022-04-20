@@ -4,20 +4,27 @@ import { reactive } from 'vue'
 import { useRouter } from 'vue-router';
 //Stores
 import { useUserStore } from '../stores/user';
+//Capacitor
+import { Geolocation } from '@capacitor/geolocation';
 
 const store = useUserStore()
 const signin_data = reactive({
     email: '',
-    password: ''
+    password: '',
+    latitude: 0,
+    longitude: 0
 })
 
-const doSignIn = () => {
+const doSignIn = async () => {
+    const coordinates = await Geolocation.getCurrentPosition();
+    signin_data.latitude = coordinates.coords.latitude
+    signin_data.longitude = coordinates.coords.longitude
     store.signIn(signin_data)
 }
 
 const router = useRouter()
 const toSignUp = () => {
-    router.push({name: 'signup'})
+    router.push({ name: 'signup' })
 }
 
 </script>
