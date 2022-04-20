@@ -1,6 +1,7 @@
 <script setup>
 //Vue
 import { reactive } from 'vue'
+import { useRouter } from 'vue-router';
 //Stores
 import { useUserStore } from '../stores/user';
 
@@ -12,6 +13,11 @@ const signin_data = reactive({
 
 const doSignIn = () => {
     store.signIn(signin_data)
+}
+
+const router = useRouter()
+const toSignUp = () => {
+    router.push({name: 'signup'})
 }
 
 </script>
@@ -28,6 +34,8 @@ const doSignIn = () => {
         </div>
         <div class="w-full">
             <button type="submit" class="w-full p-3 my-2 bg-blue-600 text-white">Entrar</button>
+            <button @click="toSignUp" type="button" class="w-full p-3 my-2">Cadastre-se</button>
         </div>
+
     </form>
 </template>
