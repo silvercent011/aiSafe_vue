@@ -18,13 +18,5 @@ export const useUserStore = defineStore('user', {
                 useToast().error('Falha no login')
             })
         },
-
-        async signUpGuard(payload) {
-
-        },
-
-        async signUpContractor(payload) {
-
-        }
     }
 })

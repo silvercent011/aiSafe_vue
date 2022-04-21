@@ -1,12 +1,14 @@
 //Vue
-import { createApp } from "vue";
+import { createApp, markRaw } from "vue";
 //Tailwind
 import './main.css'
 //Vue-Router
 import router from "./router";
 //Pinia
 import { createPinia } from "pinia";
-const pinia = createPinia()
+const pinia = createPinia().use(({ store }) => {
+    store.router = markRaw(router)
+})
 //Toastification
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
