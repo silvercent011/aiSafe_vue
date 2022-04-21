@@ -18,6 +18,11 @@ const router = createRouter({
             name: 'signupGuard',
             component: () => import('@/views/signupGuard.vue')
         },
+        {
+            path: '/signup/contractor',
+            name: 'signupContractor',
+            component: () => import('@/views/signupContractor.vue')
+        },
     ]
 })
 

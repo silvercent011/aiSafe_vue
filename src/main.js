@@ -7,7 +7,7 @@ import router from "./router";
 //Pinia
 import { createPinia } from "pinia";
 const pinia = createPinia().use(({ store }) => {
-    store.router = markRaw(router)
+    store.$router = markRaw(router)
 })
 //Toastification
 import Toast from "vue-toastification";

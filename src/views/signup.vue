@@ -2,8 +2,11 @@
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
-const toGuardSignIn = () => {
+const toGuardSignUP = () => {
     router.push({ name: 'signupGuard' })
+}
+const toContractorSignUp = () => {
+    router.push({ name: 'signupContractor' })
 }
 
 </script>
@@ -11,8 +14,8 @@ const toGuardSignIn = () => {
 <template>
     <div class="w-full flex flex-col">
         <h1 class="text-4xl mx-auto">Eu sou:</h1>
-        <button class="button" @click="toGuardSignIn">Guarda</button>
-        <button class="button">Contratante</button>
+        <button class="button" @click="toGuardSignUP">Guarda</button>
+        <button class="button" @click="toContractorSignUp">Contratante</button>
     </div>
 </template>
 

@@ -3,16 +3,16 @@ import { defineStore } from 'pinia'
 import { useToast } from "vue-toastification";
 const API_URL = import.meta.env.VITE_API_URL
 
-export const useGuardStore = defineStore('guard', {
+export const useContractorStore = defineStore('contractor', {
     state: () => {
         return {
-            guard_created: false
+            contractor_created: false
         }
     },
     actions: {
-        async signUpGuard(payload) {
-            await axios.post(`${API_URL}/users/guard`, payload).then((res) => {
-                this.guard_created = true
+        async signUpContractor(payload) {
+            await axios.post(`${API_URL}/users/contractor`, payload).then((res) => {
+                this.contractor_created = true
                 this.$router.replace({name:'signin'})
                 useToast().success('Cadastrado com sucesso!')
             }).catch((error) => {
