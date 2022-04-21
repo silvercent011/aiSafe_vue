@@ -1,12 +1,16 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { useToast } from "vue-toastification";
+import { useUserStore } from './user';
 const API_URL = import.meta.env.VITE_API_URL
+
+const userStore = useUserStore()
 
 export const useGuardStore = defineStore('guard', {
     state: () => {
         return {
-            guard_created: false
+            guard_created: false,
+            guards: undefined
         }
     },
     actions: {
@@ -19,5 +23,11 @@ export const useGuardStore = defineStore('guard', {
                 useToast().error('Falha no cadastro')
             })
         },
+
+        async getAllGuards() {
+            await axios.get(`${API_URL}/guards`, {headers:{access_token:userStore.user_data.token}}).then((res) => {
+                this.guards = res.data
+            })
+        }
     }
 })
