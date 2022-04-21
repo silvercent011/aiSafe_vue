@@ -36,7 +36,7 @@ const router = createRouter({
                 {
                     path: '/map',
                     name: 'map',
-                    component: () => import('@/views/dynamicmap.vue')
+                    component: () => import('@/views/maptab.vue')
                 },
                 {
                     path: '/usersettings',
