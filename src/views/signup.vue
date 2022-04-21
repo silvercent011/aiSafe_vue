@@ -1,5 +1,9 @@
 <script setup>
+//Vue-Router
 import { useRouter } from 'vue-router';
+//Components
+import Card from '../components/Card.vue';
+
 const router = useRouter()
 
 const toGuardSignUP = () => {
@@ -12,10 +16,14 @@ const toContractorSignUp = () => {
 </script>
 
 <template>
-    <div class="w-full flex flex-col">
-        <h1 class="text-4xl mx-auto">Eu sou:</h1>
-        <button class="button" @click="toGuardSignUP">Guarda</button>
-        <button class="button" @click="toContractorSignUp">Contratante</button>
+    <div class="min-h-screen w-full bg-blue-600 p-2">
+        <Card>
+            <div class="w-full flex flex-col">
+                <h1 class="text-4xl mx-auto">Eu sou:</h1>
+                <button class="button" @click="toGuardSignUP">Guarda</button>
+                <button class="button" @click="toContractorSignUp">Contratante</button>
+            </div>
+        </Card>
     </div>
 </template>
 
