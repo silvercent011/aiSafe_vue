@@ -36,9 +36,9 @@ export default router
 
 router.beforeEach(async (to, from, next) => {
     const userStore = useUserStore()
-    // if (!userStore.user_data.token) {
-    //     await userStore.fetchTokenFromStorage()
-    // }
+    if (!userStore.user_data) {
+        await userStore.fetchTokenFromStorage()
+    }
     const routesWithoutAuth = ['signin', 'signup', 'signupGuard', 'signupContractor']
     if (!routesWithoutAuth.includes(to.name)) {
         if (!userStore.user_logged) {

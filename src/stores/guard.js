@@ -25,7 +25,7 @@ export const useGuardStore = defineStore('guard', {
         },
 
         async getAllGuards() {
-            await axios.get(`${API_URL}/guards`, {headers:{access_token:userStore.user_data.token}}).then((res) => {
+            await axios.get(`${API_URL}/guards`, { headers: { access_token: userStore.user_data.token } }).then((res) => {
                 this.guards = res.data
             })
         }
