@@ -15,8 +15,12 @@ import "vue-toastification/dist/index.css";
 //Main Component
 import App from "./App.vue";
 
+//FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 const app = createApp(App)
 app.use(Toast)
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(pinia)
 app.use(router)
 app.mount("#app");

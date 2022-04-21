@@ -25,9 +25,25 @@ const router = createRouter({
             component: () => import('@/views/signupContractor.vue')
         },
         {
-            path: '/guards',
-            name: 'guards',
-            component: () => import('@/views/guardsList.vue')
+            path: '/home',
+            component: () => import('@/views/homepage.vue'),
+            children: [
+                {
+                    path: '',
+                    name: 'guards',
+                    component: () => import('@/views/guardsList.vue')
+                },
+                {
+                    path: '/map',
+                    name: 'map',
+                    component: () => import('@/views/dynamicmap.vue')
+                },
+                {
+                    path: '/usersettings',
+                    name: 'usersettings',
+                    component: () => import('@/views/usersettings.vue')
+                },
+            ]
         },
     ]
 })
@@ -49,7 +65,7 @@ router.beforeEach(async (to, from, next) => {
         }
     } else {
         if (userStore.user_logged && to.path === '/') {
-            next({ path: '/guards' })
+            next({ path: '/home' })
         }
         next()
     }
