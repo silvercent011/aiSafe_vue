@@ -14,9 +14,9 @@ export const useGuardStore = defineStore('guard', {
             await axios.post(`${API_URL}/users/guard`, payload).then((res) => {
                 this.guard_created = true
                 useToast().success('Cadastrado com sucesso!')
-                this.$router.replace({name:'signin'})
+                this.$router.replace({ name: 'signin' })
             }).catch((error) => {
-            useToast().error('Falha no cadastro')
+                useToast().error('Falha no cadastro')
             })
         },
     }
