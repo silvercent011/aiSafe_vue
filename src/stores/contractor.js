@@ -13,8 +13,8 @@ export const useContractorStore = defineStore('contractor', {
         async signUpContractor(payload) {
             await axios.post(`${API_URL}/users/contractor`, payload).then((res) => {
                 this.contractor_created = true
-                this.$router.replace({name:'signin'})
                 useToast().success('Cadastrado com sucesso!')
+                this.$router.replace({name:'signin'})
             }).catch((error) => {
             useToast().error('Falha no cadastro')
             })
