@@ -2,16 +2,22 @@
 import { useUserStore } from '@/stores/user';
 import { reactive } from 'vue';
 import Card from '@/components/Card.vue';
+import { useContractorStore } from '../stores/contractor';
 
 const userStore = useUserStore()
 const userData = reactive(JSON.parse(JSON.stringify(userStore.user_data)))
+
+const contratorStore = useContractorStore()
+const updateContractor = () => {
+    contratorStore.updateUserInfo(userData)
+}
 
 </script>
 
 <template>
     <Card v-if="userData.type === 'GUARD'">
         <h1 class="text-2xl font-bold">Dados Pessoais</h1>
-        <form @submit.prevent="">
+        <form @submit.prevent="updateContractor">
             <div class="w-full flex flex-col">
                 <label for="cpf">CPF</label>
                 <input class="" v-model.trim="userData.cpf" type="number" anme="cpf" id="cpf">
@@ -35,6 +41,9 @@ const userData = reactive(JSON.parse(JSON.stringify(userStore.user_data)))
             <div class="w-full flex flex-col">
                 <label for="phone">Celular</label>
                 <input class="" v-model.trim="userData.phone" type="number" name="phone" id="phone">
+            </div>
+            <div class="w-full">
+                <button type="submit" class="w-full p-3 my-2 bg-blue-600 text-white rounded-lg">Salvar</button>
             </div>
         </form>
     </Card>
